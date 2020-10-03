@@ -26,6 +26,22 @@
             }
             
         })
+
+        const p={
+            firstName:"a",
+            lastName:"b"
+        }
+        Object.defineProperty(p,"fullName",{
+            get(){
+                return this.firstName+"-"+this.lastName;
+            }
+        })
+        console.log(p.fullName);
+        p.fullName=p.firstName+"-"+p.lastName;
+        
+        p.firstName="C";
+        p.lastName="D";
+       console.log(p.fullName);
     </script>
 </body>
 </html>

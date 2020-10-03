@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        姓: <input type="text" placeholder="firstname"  v-model="firstname"> <br>
+        名: <input type="text" placeholder="lastname" v-model="lastname"> <br>
+        姓名1: <input type="text" placeholder="fullname1" v-model="fullname1"> <br>
+        姓名2: <input type="text" placeholder="fullname2" v-model="fullname2"> <br>
+        姓名3: <input type="text" placeholder="fullname3" v-model="fullname3"> <br>
+
+
+        <p>{{fullname1}}</p>
+        <p>{{fullname1}}</p>
+        <p>{{fullname1}}</p>
+        <p>{{fullname1}}</p>
+        <p>{{fullname1}}</p>
+        <p>{{fullname1}}</p>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        Vue.config.productionTip=false;
+
+        const vm=new Vue({
+            data:{
+                firstname:"A",
+                lastname:"B",
+                fullname2:"A-B"
+            },
+            computed:{  //计算属性  
+                
+                fullname1(){
+                    console.log("fullname1",this);
+                    return this.firstname+"-"+this.lastname;
+                },
+                
+                fullname3:{
+                    get(){
+                        return this.firstname+"-"+this.lastname;
+                    },
+                    set(value){
+                        const names=value.split('-');
+                        this.firstname=names[0];
+                        this.lastname=names[1];
+                    }
+                }
+            },
+            watch: {
+                firstname (value){
+                    this.fullname2=value+this.lastname
+                }
+            }
+        })
+        vm.$mount("#app"); 
+        // 监视
+        vm.$watch('lastname',function(value){
+            console.log('111');
+            this.fullname2=this.firstname+"-"+value;
+        })
+    </script>
+</body>
+</html>

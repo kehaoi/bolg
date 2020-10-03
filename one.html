@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="example">
+        <h2>绑定监听</h2>
+        <!-- <button v-on:click="test">test</button> -->
+        <button @click="test">test</button>
+        <button @click="test1('name')">test</button>
+        <button @click="test2('111111111111',$event)">test</button>
+        <h2>事件修饰符</h2>
+        <a href="http://www.baidu.com" v-on:click.prevent="test3">链接</a>
+        <h2>按键修饰符</h2>
+        <input type="text" v-model="msg" @keyup.13="test4">
+    </div>
+   
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#example",
+            data:{
+               msg:"ddfdfdsf"
+            },
+            methods:{
+                test(event){
+                    alert(event.target.innerHTML)
+                },
+                test1(name){
+                    alert(name);
+                },
+                test2(name,e){
+                    alert(name+"----"+e.target.innerHTML);
+                },
+                test3(){
+                    // event.preventDefault();
+                    alert("你点击了链接")
+                },
+                test4(event){
+                    // if (event.keyCode==13) {
+                         alert(this.msg)
+                    // }
+                   
+                }
+            }
+        });
+    </script>
+</body>
+</html>

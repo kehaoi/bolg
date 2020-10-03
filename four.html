@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .classA{
+            color:red;
+        }
+        .classB{
+            background: indigo;
+        }
+        .classC{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <h2>1 class绑定</h2>
+        <p :class="class1">xxxxxxxxxx</p>
+        <p :class="{classA: hasA,classB: hasB}">yyyyyyyyyyy</p>
+        <p :class="['classA','classC']">ZZZZZZZZZZZZZz</p>
+        <p  :style="{color:myclass}">eeeee</p>
+
+        <button @click="update">点击</button>
+        <h2>2 style绑定</h2>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data(){
+                return{
+                    class1:"classA",
+                    hasA: true,
+                    hasB: false,
+                    myclass: "blue"
+                }
+            },
+            methods:{
+                update(){
+                    this.class1="classC";
+                    this.hasA=!this.hasA;
+                    this.hasB=!this.hasB;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
